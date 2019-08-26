@@ -1,7 +1,6 @@
 const vue = new Vue({
     el: "#app",
     data: {
-        name: "Furkan",
         userHealth: 100,
         monsterHealth: 100,
         gameStarted: false,
