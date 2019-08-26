@@ -2,8 +2,8 @@ const vue = new Vue({
     el: "#app",
     data: {
         name: "Furkan",
-        userHealth: "100",
-        monsterHealth: "100",
+        userHealth: 100,
+        monsterHealth: 100,
         gameStarted: false,
         remSpecialAttack: 3,
         attackLog: []
@@ -29,8 +29,8 @@ const vue = new Vue({
     methods: {
         startGame() {
             this.gameStarted = true;
-            this.userHealth = "100";
-            this.monsterHealth = "100";
+            this.userHealth = 100;
+            this.monsterHealth = 100;
             this.gameStarted = true;
             this.remSpecialAttack = 3;
             this.attackLog = [];
@@ -100,8 +100,8 @@ const vue = new Vue({
             this.attackLog.push({ userAttack: 0, monsterAttack, healthGained });
         },
         giveUp() {
-            this.userHealth = "100";
-            this.monsterHealth = "100";
+            this.userHealth = 100;
+            this.monsterHealth = 100;
             this.gameStarted = false;
             this.remSpecialAttack = 3;
             this.attackLog = [];
