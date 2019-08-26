@@ -31,13 +31,12 @@ const vue = new Vue({
             this.gameStarted = true;
             this.userHealth = 100;
             this.monsterHealth = 100;
-            this.gameStarted = true;
             this.remSpecialAttack = 3;
             this.attackLog = [];
         },
         attack(e) {
-            let userAttack = Math.floor(Math.random() * 5) + 1; // 1-5 damage
-            let monsterAttack = Math.floor(Math.random() * 6) + 1; //1-6 damage
+            let userAttack = Math.max(Math.floor(Math.random() * 5) + 1, 2); // 2-5 damage
+            let monsterAttack = Math.max(Math.floor(Math.random() * 6) + 1, 2); //2-6 damage
 
             this.monsterHealth -= userAttack;
             this.userHealth -= monsterAttack;
@@ -62,8 +61,8 @@ const vue = new Vue({
         },
         specialAttack() {
             console.log("Special Attack");
-            let userAttack = Math.floor(Math.random() * 9) + 2; // 2-10 damage
-            let monsterAttack = Math.floor(Math.random() * 6) + 1; //1-6 damage
+            let userAttack = Math.max(Math.floor(Math.random() * 10) + 1, 5); // 5-10 damage
+            let monsterAttack = Math.max(Math.floor(Math.random() * 6) + 1, 2); //2-6 damage
 
             this.monsterHealth -= userAttack;
             this.userHealth -= monsterAttack;
@@ -92,8 +91,8 @@ const vue = new Vue({
             }
         },
         heal() {
-            let healthGained = Math.floor(Math.random() * 4) + 2; // 2-5 health gained
-            let monsterAttack = Math.floor(Math.random() * 6) + 1; //1-6 damage
+            let healthGained = Math.max(Math.floor(Math.random() * 10) + 1, 3); // 3-10 health gained
+            let monsterAttack = Math.max(Math.floor(Math.random() * 6) + 1, 2); //2-6 damage
 
             this.userHealth += healthGained - monsterAttack;
 
