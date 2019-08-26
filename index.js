@@ -35,30 +35,45 @@ const vue = new Vue({
             this.attackLog = [];
         },
         attack() {
-            if (this.checkWin()) return;
+            let userAttack = this.calculateDamage(4, 7);
 
-            this.monsterHealth -= this.calculateDamage(2, 5);
-            this.userHealth -= this.calculateDamage(2, 6);
+            this.monsterHealth -= userAttack;
+
+            let monsterAttack = this.monsterAttack(5, 10);
 
             this.attackLog.push({ userAttack, monsterAttack });
+
+            if (this.checkWin()) return;
         },
         specialAttack() {
-            if (this.checkWin()) return;
+            let userAttack = this.calculateDamage(8, 12);
+            this.monsterHealth -= userAttack;
 
-            this.monsterHealth -= this.calculateDamage(5, 10);
-            this.userHealth -= this.calculateDamage(2, 6);
+            let monsterAttack = this.monsterAttack(5, 10);
 
             this.attackLog.push({ userAttack, monsterAttack });
 
             this.remSpecialAttack--;
+
+            if (this.checkWin()) return;
+        },
+        monsterAttack(min, max) {
+            let attack = this.calculateDamage(min, max);
+
+            this.userHealth -= attack;
+
+            return attack;
         },
         heal() {
-            if (this.checkWin()) return;
+            let healthGained = this.calculateHealth(5, 10);
 
-            this.userHealth +=
-                this.calculateHealth(3, 10) - this.calculateDamage(2, 6);
+            let monsterAttack = this.monsterAttack(5, 10);
+
+            this.userHealth += healthGained - monsterAttack;
 
             this.attackLog.push({ userAttack: 0, monsterAttack, healthGained });
+
+            if (this.checkWin()) return;
         },
         giveUp() {
             this.userHealth = 100;
@@ -82,7 +97,7 @@ const vue = new Vue({
                 }
                 return true;
             } else if (this.userHealth <= 0) {
-                if (confirm("Try Again 🎉")) {
+                if (confirm("Try Again 😥")) {
                     this.startGame();
                 } else {
                     this.gameStarted = false;
