@@ -15,7 +15,9 @@
                         <div
                             class="healthbar text-center"
                             :style="getUserStyle"
-                        ></div>
+                        >
+                            {{ userHealth }}
+                        </div>
                     </div>
                 </div>
                 <div class="small-6 columns">
@@ -24,7 +26,9 @@
                         <div
                             class="healthbar text-center"
                             :style="getMonsterStyle"
-                        ></div>
+                        >
+                            {{ monsterHealth }}
+                        </div>
                     </div>
                 </div>
             </section>
