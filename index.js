@@ -92,7 +92,7 @@ const vue = new Vue({
             }
         },
         heal() {
-            let healthGained = Math.floor(Math.random() * 6) + 1; // 1-6 health gained
+            let healthGained = Math.floor(Math.random() * 4) + 2; // 2-5 health gained
             let monsterAttack = Math.floor(Math.random() * 6) + 1; //1-6 damage
 
             this.userHealth += healthGained - monsterAttack;
