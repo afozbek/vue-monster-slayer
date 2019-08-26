@@ -100,10 +100,9 @@ const vue = new Vue({
             this.attackLog.push({ userAttack: 0, monsterAttack, healthGained });
         },
         giveUp() {
-            this.gameStarted = true;
             this.userHealth = "100";
             this.monsterHealth = "100";
-            this.gameStarted = true;
+            this.gameStarted = false;
             this.remSpecialAttack = 3;
             this.attackLog = [];
         }
