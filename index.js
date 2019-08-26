@@ -5,6 +5,7 @@ const vue = new Vue({
         userHealth: "100",
         monsterHealth: "100",
         gameStarted: false,
+        remSpecialAttack: 3,
         attackLog: []
     },
     computed: {
@@ -31,6 +32,7 @@ const vue = new Vue({
             this.userHealth = "100";
             this.monsterHealth = "100";
             this.gameStarted = true;
+            this.remSpecialAttack = 3;
             this.attackLog = [];
         },
         attack(e) {
@@ -59,6 +61,7 @@ const vue = new Vue({
             }
         },
         specialAttack() {
+            console.log("Special Attack");
             let userAttack = Math.floor(Math.random() * 9) + 2; // 2-10 damage
             let monsterAttack = Math.floor(Math.random() * 6) + 1; //1-6 damage
 
@@ -66,6 +69,8 @@ const vue = new Vue({
             this.userHealth -= monsterAttack;
 
             this.attackLog.push({ userAttack, monsterAttack });
+
+            this.remSpecialAttack--;
 
             // CHECK FOR WIN RESULTS
             if (this.monsterHealth <= 0) {
@@ -95,10 +100,12 @@ const vue = new Vue({
             this.attackLog.push({ userAttack: 0, monsterAttack, healthGained });
         },
         giveUp() {
-            this.gameStarted = false;
+            this.gameStarted = true;
+            this.userHealth = "100";
+            this.monsterHealth = "100";
+            this.gameStarted = true;
+            this.remSpecialAttack = 3;
             this.attackLog = [];
-            this.userHealth = 100;
-            this.monsterHealth = 100;
         }
     }
 });

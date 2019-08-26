@@ -43,8 +43,12 @@
                 <div class="small-12 columns">
                     <button @click="attack" id="attack">ATTACK</button>
 
-                    <button @click="specialAttack" id="special-attack">
-                        SPECIAL ATTACK
+                    <button
+                        v-show="remSpecialAttack > 0"
+                        @click="specialAttack"
+                        id="special-attack"
+                    >
+                        SPECIAL ATTACK ({{ remSpecialAttack }})
                     </button>
 
                     <button @click="heal" id="heal">HEAL</button>
