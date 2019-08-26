@@ -64,13 +64,18 @@ const vue = new Vue({
             return attack;
         },
         heal() {
-            let healthGained = this.calculateHealth(5, 10);
+            let healthGained = this.calculateHealth(7, 10);
+            console.log("TCL: heal -> healthGained", healthGained);
 
             let monsterAttack = this.monsterAttack(5, 10);
 
-            this.userHealth += healthGained - monsterAttack;
+            this.userHealth += healthGained;
 
             this.attackLog.push({ userAttack: 0, monsterAttack, healthGained });
+
+            if (this.userHealth >= 100) {
+                this.userHealth = 100;
+            }
 
             if (this.checkWin()) return;
         },
